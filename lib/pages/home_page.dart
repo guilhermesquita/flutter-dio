@@ -1,4 +1,3 @@
-import 'package:diotutorial/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +10,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const LoginPage();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Página Principal"),
+      ),
+    );
   }
 }

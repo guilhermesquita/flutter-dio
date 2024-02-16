@@ -1,4 +1,4 @@
-import 'package:diotutorial/pages/home_page.dart';
+import 'package:diotutorial/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -7,10 +7,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'IMC calculations',
+      title: 'Login',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const HomePage(),
+      home: const LoginPage(),
     );
   }
 }

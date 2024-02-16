@@ -1,3 +1,4 @@
+import 'package:diotutorial/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -10,6 +11,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
+  bool isObscured = true;
 
   @override
   Widget build(BuildContext context) {
@@ -100,29 +102,39 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: Alignment.center,
                     child: TextField(
                       onChanged: (value) => {password = value},
+                      obscureText: isObscured,
                       style: const TextStyle(color: Colors.white),
-                      decoration: const InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
+                      decoration: InputDecoration(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromARGB(255, 255, 255, 255),
                             width: 0.8,
                           ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromARGB(255, 201, 19, 214),
                             width: 3,
                           ),
                         ),
                         hintText: "Senha",
-                        hintStyle: TextStyle(color: Colors.white),
-                        prefixIcon: Icon(
+                        hintStyle: const TextStyle(color: Colors.white),
+                        prefixIcon: const Icon(
                           Icons.lock,
                           color: Color.fromARGB(255, 127, 40, 193),
                         ),
-                        suffixIcon: Icon(
-                          Icons.visibility,
-                          color: Color.fromARGB(255, 127, 40, 193),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              isObscured = !isObscured;
+                            });
+                          },
+                          child: Icon(
+                            isObscured
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: const Color.fromARGB(255, 127, 40, 193),
+                          ),
                         ),
                       ),
                     ),
@@ -141,6 +153,20 @@ class _LoginPageState extends State<LoginPage> {
                         child: TextButton(
                           onPressed: () {
                             // ignore: avoid_print
+                            if (email == 'email@teste.com' &&
+                                password.trim() == '123') {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content: Text('Erro ao efetuar Login'),
+                              ));
+                            }
                             print('email: $email, senha: $password');
                           },
                           style: ButtonStyle(
