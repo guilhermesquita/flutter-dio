@@ -21,12 +21,30 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: Center(
+      body: Column(
+        children: [
+          Text(
+            "Ações do usuário",
+            style: GoogleFonts.montserrat(),
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.red,
+              width: 200,
+              child: Text(
+                "foi clicado $counter vezes",
+                style: GoogleFonts.montserrat(fontSize: 20),
+              ),
+            ),
+          )
+        ],
+      ),
+      /*Center(
         child: Text(
           "$counter",
           style: GoogleFonts.montserrat(),
         ),
-      ),
+      ),*/
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
           setState(() {
