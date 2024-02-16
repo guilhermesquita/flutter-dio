@@ -1,5 +1,5 @@
+import 'package:diotutorial/pages/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,55 +9,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int counter = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'My App',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.green,
-      ),
-      body: Column(
-        children: [
-          Text(
-            "Ações do usuário",
-            style: GoogleFonts.montserrat(),
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.red,
-              width: 200,
-              child: Text(
-                "foi clicado $counter vezes",
-                style: GoogleFonts.montserrat(fontSize: 20),
-              ),
-            ),
-          )
-        ],
-      ),
-      /*Center(
-        child: Text(
-          "$counter",
-          style: GoogleFonts.montserrat(),
-        ),
-      ),*/
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {
-          setState(() {
-            counter++;
-          })
-        },
-        backgroundColor: Colors.green,
-        hoverColor: const Color.fromARGB(255, 49, 118, 51),
-        child: const Icon(
-          Icons.add_box_outlined,
-          color: Colors.white,
-        ),
-      ),
-    );
+    return const LoginPage();
   }
 }
